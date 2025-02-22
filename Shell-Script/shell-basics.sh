@@ -16,5 +16,16 @@ echo " this is 2^5(2 power 5): $((2**5))"
 echo "$e" # 6
 ((e++)) # We can increase variable values here.
 echo "$e" # 7
+# d=$(echo "scale=2; 53/2" | bc)
+# echo $d
 
+#Zero After evaluation = Exit status is 1
+# Non-Zero After evaluation = Exit status is 0
+((1+1))
+echo $?
 
+((1-1))
+echo $?
+
+((1+1))
+echo $?
