@@ -1,0 +1,14 @@
+#!/bin/bash
+
+a=2
+b=8
+c=$(($a+$b)) 
+echo "$c" # 10
+# (( )) This double Paranthesis Are used to execute Mathematics. 
+# Our Shell-Script Can't underStand if we write in () single paranthesis
+((5+6)) # this command Execute but Nothing to Print Anything.
+$((6+7)) # shell-basics.sh: line 9: 13: command not found.
+
+echo " This is multiplication: $((2*5))"
+echo " this is 2^5(2 power 5): $((2**5))"
+
