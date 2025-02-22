@@ -12,3 +12,9 @@ $((6+7)) # shell-basics.sh: line 9: 13: command not found.
 echo " This is multiplication: $((2*5))"
 echo " this is 2^5(2 power 5): $((2**5))"
 
+((e=6)) # We can intialize variable values here.
+echo "$e" # 6
+((e++)) # We can increase variable values here.
+echo "$e" # 7
+
+
