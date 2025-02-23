@@ -2,7 +2,7 @@
 
 a=2 # Variable Declaration
 b=8 # Variable Declaration
-c=$(($a+$b)) 
+c=$((a+b)) 
 echo "$c" # 10
 # (( )) This double Paranthesis Are used to execute Mathematics. 
 # Our Shell-Script Can't underStand if we write in () single paranthesis
