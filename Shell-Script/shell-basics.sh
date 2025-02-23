@@ -1,7 +1,7 @@
 #!/bin/bash
 
-a=2
-b=8
+a=2 # Variable Declaration
+b=8 # Variable Declaration
 c=$(($a+$b)) 
 echo "$c" # 10
 # (( )) This double Paranthesis Are used to execute Mathematics. 
