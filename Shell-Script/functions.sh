@@ -1,6 +1,7 @@
 #!/bin/bash
-
- SCRIPT_NAME=$(echo "$0" | cut -d "." -f1)
+TIME_STAMP=$(date +%F-%H:%m:%s)
+SCRIPT_NAME=$(echo "$0" | cut -d "." -f1)
+LOGGING=$($SCRIPT_NAME-$TIME_STAMP.log)
 R="\e[31m"
 cyan="\e[36m"
 G="\e[32m"
@@ -51,5 +52,7 @@ else
   fi 
    echo -e "$cyan*************$R ScriptName $cyan********************$N"
   echo $SCRIPT_NAME
+  echo $TIME_STAMP
+  echo $LOGGING
    # if we run this Script "./functions.sh" we will get uotput ./functions.sh 
    # so we execute this Script using "sh functions.sh"

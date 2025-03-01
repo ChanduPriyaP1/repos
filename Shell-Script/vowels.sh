@@ -19,3 +19,4 @@ fi
 
 # -n STRING → True if STRING is not empty (length > 0).
 # -z STRING → True if STRING is empty (length = 0).
+# wc -l is used because each vowel is printed on a separate line, making it easy to count vowels.
