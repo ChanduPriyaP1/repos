@@ -1,7 +1,7 @@
 #!/bin/bash
 TIME_STAMP=$(date +%F-%H:%m:%s)
 SCRIPT_NAME=$(echo "$0" | cut -d "." -f1)
-LOGGING=$($SCRIPT_NAME-$TIME_STAMP.log)
+LOGGING=$($SCRIPT_NAME-$TIME_STAMP).log
 R="\e[31m"
 cyan="\e[36m"
 G="\e[32m"
