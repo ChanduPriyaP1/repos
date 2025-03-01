@@ -29,7 +29,7 @@ functions 3 6 // Function Call
  functions 7 3 // Function Call
  echo -e "$R$BY sum of given numbers: $a $N"
 
- echo -e "$cyan*************$G PreviousStatus $N********************$N"
+ echo -e "$cyan*************$G PreviousStatus $cyan********************$N"
  
  if [ $? -ne 0 ]
  then
@@ -39,7 +39,7 @@ else
     echo -e "Existed Statement Is $G Success.......$N"  
  fi
 
- echo -e "$cyan*************$R SuperUser(OR)not $N********************$N"
+ echo -e "$cyan*************$R SuperUser(OR)not $N$cyan********************$N"
   USERID=$(id -u)
   echo "$USERID"
 
