@@ -1,5 +1,5 @@
 #!/bin/bash
-TIME_STAMP=$(date +%F-%h:%m:%s)
+TIME_STAMP=$(date +%F-%H:%M:%S)
 SCRIPT_NAME=$(echo "$0" | cut -d "." -f1)
 LOGGING=/tmp/$SCRIPT_NAME-$TIME_STAMP.log
 R="\e[31m"
