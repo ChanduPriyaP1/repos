@@ -39,7 +39,7 @@ else
     echo -e "Existed Statement Is $G Success.......$N"  
  fi
 
- echo -e "$cyan*************$R SuperUser(OR)not $N$cyan********************$N"
+ echo -e "$cyan*************$R SuperUser(OR)not $cyan********************$N"
   USERID=$(id -u)
   echo "$USERID"
 
@@ -49,7 +49,7 @@ else
  else
    echo "You didn't Have Admin Access...You are NormalUser"  
   fi 
-   echo -e "$cyan*************$R ScriptName $N********************$N"
+   echo -e "$cyan*************$R ScriptName $cyan********************$N"
   echo $SCRIPT_NAME
    # if we run this Script "./functions.sh" we will get uotput ./functions.sh 
    # so we execute this Script using "sh functions.sh"
