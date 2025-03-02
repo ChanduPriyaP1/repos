@@ -51,7 +51,7 @@ else
  else
    echo "You didn't Have Admin Access...You are NormalUser"  
   fi 
-   echo -e "$cyan*************$R ScriptName $cyan********************$N"
+   echo "$cyan*************$R ScriptName $cyan********************$N" &>>$LOGFILE
   echo $SCRIPT_NAME
   echo $TIMESTAMP
   echo $LOGFILE
