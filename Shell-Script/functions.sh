@@ -2,6 +2,7 @@
 TIME_STAMP=$(date +%F-%H:%M:%S)
 SCRIPT_NAME=$(echo "$0" | cut -d "." -f1)
 LOGFILE=/tmp/$SCRIPT_NAME-$TIME_STAMP.log
+# LOGFILE=/tmp/$SCRIPT_NAME-$TIMESTAMP.log
 R="\e[31m"
 cyan="\e[36m"
 G="\e[32m"
