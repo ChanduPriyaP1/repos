@@ -23,10 +23,10 @@ echo -e "$cyan**********SumOfTwoNum***********************$N"
     a=$((no1+no2)) 
 }
 
-functions 2 10 // Function Call
+functions $1 $2 // Function Call
  echo -e "$Y sum: $a $N"  
 
-functions 3 6 // Function Call
+functions $3 $4 // Function Call
  echo -e "$R sum: $a $N"
  functions 7 3 // Function Call
  echo -e "$R$BY sum of given numbers: $a $N"

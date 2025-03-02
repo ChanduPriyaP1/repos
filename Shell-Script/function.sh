@@ -40,3 +40,4 @@ do
     fi
 done
 
+#  sudo sh function.sh git nginx
