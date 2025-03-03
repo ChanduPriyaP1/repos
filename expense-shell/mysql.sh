@@ -17,7 +17,6 @@ lr="\e[91m" # Lightred
 BY="\e[43m" # Background Yellow
 N="\e[0m"
 
- echo -e "$cyan*************$G VALIDATE FUNCTION $cyan********************$N"
  VALIDATE()
  {
       if [ $1 -ne 0 ]
@@ -40,20 +39,22 @@ echo -e "$cyan*************$R SuperUser(OR)not $cyan********************$N"
   fi 
 
   dnf install mysql-server -y &>>LOGFILE
-  VALIDATE $? "Installing mysql"
+  VALIDATE $? "Installing mysql...."
+
   systemctl enable mysqld  &>>LOGFILE
-  VALIDATE $? "enabling mysql"
+  VALIDATE $? "enabling mysql..."
+
   systemctl start mysqld  &>>LOGFILE
-  VALIDATE $? "starting mysql"
+  VALIDATE $? "starting mysql..."
   # mysql_secure_installation --set-root-pass ExpenseApp@1  &>>LOGFILE
   # VALIDATE $? "setting up mysql root Passward"
 
   #Below code will be useful for idempotent nature
-mysql -h db.daws78s.online -uroot -p${mysql_root_password} -e 'show databases;' &>>$LOGFILE
+mysql -h 172.31.42.54 -uroot -p${mysql_root_password} -e 'show databases;' &>>$LOGFILE
 if [ $? -ne 0 ]
 then
     mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOGFILE
-    VALIDATE $? "MySQL Root password Setup"
+    VALIDATE $? "MySQL Root password Setup..."
 else
     echo -e "MySQL Root password is already setup...$Y SKIPPING $N"
 fi

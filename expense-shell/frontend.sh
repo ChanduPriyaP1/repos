@@ -14,7 +14,6 @@ lr="\e[91m" # Lightred
 BY="\e[43m" # Background Yellow
 N="\e[0m"
 
-echo -e "$cyan*************$G VALIDATE FUNCTION $cyan********************$N"
  VALIDATE()
  {
       if [ $1 -ne 0 ]
@@ -37,27 +36,27 @@ echo -e "$cyan*************$R SuperUser(OR)not $cyan********************$N"
   fi 
 
   dnf install nginx -y &>>LOGFILE
-  VALIDATE $? "Installing Nginx"
+  VALIDATE $? "Installing Nginx......."
 
   systemctl enable nginx &>>LOGFILE
-  VALIDATE $? "Enable Nginx"
+  VALIDATE $? "Enable Nginx....."
 
   systemctl start nginx &>>LOGFILE
-  VALIDATE $? "Starting Nginx"
+  VALIDATE $? "Starting Nginx...."
 
   rm -rf /usr/share/nginx/html/*
-  VALIDATE $? "Remove Old Nginx"
+  VALIDATE $? "Remove Old Nginx...."
 
 
   curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip &>>LOGFILE
-  VALIDATE $? "Download frontend Application"
+  VALIDATE $? "Download frontend Application...."
 
   cd /usr/share/nginx/html
 
   unzip /tmp/frontend.zip &>>LOGFILE
   VALIDATE $? "Unzip frontend Application"
 
-  cp      /etc/nginx/default.d/expense.conf
+  cp      /etc/nginx/default.d/expense.conf &>>LOGFILE
 
   systemctl restart nginx &>>LOGFILE
   VALIDATE $? "frontend Application Restart"

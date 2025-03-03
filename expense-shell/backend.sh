@@ -17,8 +17,8 @@ lr="\e[91m" # Lightred
 BY="\e[43m" # Background Yellow
 N="\e[0m"
 
-echo -e "$cyan*************$G VALIDATE FUNCTION $cyan********************$N"
  VALIDATE()
+
  {
       if [ $1 -ne 0 ]
       then
@@ -33,48 +33,58 @@ echo -e "$cyan*************$R SuperUser(OR)not $cyan********************$N"
 
  if [ $USERID -eq 0 ]
  then 
-   echo "You Are Super User...."
+   echo "$lr You Are Super User....$N"
  else
-   echo "You didn't Have Admin Access...You are NormalUser"  
+   echo "$lr You didn't Have Admin Access...You are NormalUser$N"  
    exit 1
   fi 
 # Disbling old nodejs
 dnf module disable nodejs -y &>>LOGFILE
-VALIDATE $? "Nodejs Disabling is"
+VALIDATE $? "Nodejs Disabling is...."
 
 dnf module enable nodejs:20 -y &>>LOGFILE
-VALIDATE $? "Nodejs 20:v Enabling is"
+VALIDATE $? "Nodejs 20:v Enabling is...."
 
 dnf install nodejs -y &>>LOGFILE
-VALIDATE $? "Nodejs installing"
+VALIDATE $? "Nodejs installing...."
 
-useradd expense
+id expense &>>LOGFILE
+  if [ $? -eq 0 ]
+     then
+       echo -e "$m Expense User Already Created......$N"
+     else     
+       useradd expense &>>LOGFILE
+       VALIDATE $? "User Creation...."
+   fi    
 
-mkdir -p /app # we mention -p if the directory is created it won't create directory again and it doesn't generate error. 
+mkdir -p /app &>>LOGFILE # we mention -p if the directory is created it won't create directory again and it doesn't generate error. 
+VALIDATE $? "Creating App Directory...."
 
 curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>LOGFILE
-VALIDATE $? "Backend Application Downloaded"
+VALIDATE $? "Backend Application Downloaded..."
 
 cd /app
-
+rm -rf /app/*
 unzip /tmp/backend.zip &>>LOGFILE
+VALIDATE $? "Extracted Backend code....."
 
 npm install &>>LOGFILE
-VALIDATE $? "npm installation"
+VALIDATE $? "instaling nodejs Dependencies...."
 
-cp  /etc/systemd/system/backend.service
+cp /home/ec2-user/repos/expense-shell/backend.service /etc/systemd/system/backend.service &>>LOGFILE
+VALIDATE $? "copied backend service..."
 
 systemctl daemon-reload &>>LOGFILE
-VALIDATE $? "Daemon-reload"
+VALIDATE $? "Daemon-reload...."
 
 systemctl start backend &>>LOGFILE
-VALIDATE $? "Starting Backend Application"
+VALIDATE $? "Starting Backend Application...."
 
 systemctl enable backend &>>LOGFILE
-VALIDATE $? "Enabling Backend Application"
+VALIDATE $? "Enabling Backend Application....."
 
 dnf install mysql -y &>>LOGFILE
-VALIDATE $? "installing Mysql"
+VALIDATE $? "installing Mysql....."
 
 mysql -h <MYSQL-SERVER-IPADDRESS> -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>LOGFILE
 VALIDATE $? "Schema loading"
