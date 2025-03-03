@@ -4,7 +4,10 @@ USERID=$(id -u)
 TIMESTAMP=$(date +%F-%H:%M:%S)
 SCRIPT_NAME=$(echo "$0" | cut -d "." -f1)
 LOGFILE=/tmp/$SCRIPT_NAME-$TIMESTAMP.log
-# LOGFILE=/tmp/$SCRIPT_NAME-$TIMESTAMP.log
+
+echo "Please enter DB password:"
+read -s mysql_root_password
+
 R="\e[31m"
 cyan="\e[36m"
 G="\e[32m"
@@ -42,5 +45,15 @@ echo -e "$cyan*************$R SuperUser(OR)not $cyan********************$N"
   VALIDATE $? "enabling mysql"
   systemctl start mysqld  &>>LOGFILE
   VALIDATE $? "starting mysql"
-  mysql_secure_installation --set-root-pass ExpenseApp@1  &>>LOGFILE
-  VALIDATE $? "setting up mysql root Passward"
+  # mysql_secure_installation --set-root-pass ExpenseApp@1  &>>LOGFILE
+  # VALIDATE $? "setting up mysql root Passward"
+
+  #Below code will be useful for idempotent nature
+mysql -h db.daws78s.online -uroot -p${mysql_root_password} -e 'show databases;' &>>$LOGFILE
+if [ $? -ne 0 ]
+then
+    mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOGFILE
+    VALIDATE $? "MySQL Root password Setup"
+else
+    echo -e "MySQL Root password is already setup...$Y SKIPPING $N"
+fi
