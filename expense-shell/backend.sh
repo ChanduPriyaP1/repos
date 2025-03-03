@@ -33,9 +33,9 @@ echo -e "$cyan*************$R SuperUser(OR)not $cyan********************$N"
 
  if [ $USERID -eq 0 ]
  then 
-   echo "$lr You Are Super User....$N"
+   echo -e "$lr You Are Super User....$N"
  else
-   echo "$lr You didn't Have Admin Access...You are NormalUser$N"  
+   echo -e "$lr You didn't Have Admin Access...You are NormalUser$N"  
    exit 1
   fi 
 # Disbling old nodejs
@@ -86,7 +86,7 @@ VALIDATE $? "Enabling Backend Application....."
 dnf install mysql -y &>>LOGFILE
 VALIDATE $? "installing Mysql....."
 
-mysql -h <MYSQL-SERVER-IPADDRESS> -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>LOGFILE
+mysql -h 172.31.42.54 -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>LOGFILE
 VALIDATE $? "Schema loading"
 
 systemctl restart backend &>>LOGFILE
