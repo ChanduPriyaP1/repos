@@ -7,28 +7,31 @@ R="\e[31m"
 cyan="\e[36m"
 G="\e[32m"
 Y="\e[33m"
+m="\e[35m" # meganta
+lr="\e[91m" # Lightred
 BY="\e[43m"
 N="\e[0m"
-functions()
+echo -e "$cyan**********$m FUNCTION1 $cyan***********************$N"
+functions1()
 {
     return $(($1+$2))
 }
-functions 2 10 // function Call
+functions1 2 10 // function Call
  echo "sum: $?"
-echo -e "$cyan**********SumOfTwoNum***********************$N"
- functions()
+echo -e "$cyan**************$m FUNCTION2 $cyan*******************$N"
+ functions2()
 {
     no1=$1
     no2=$2
     a=$((no1+no2)) 
 }
 
-functions $1 $2 // Function Call
+functions2 $1 $2 // Function Call
  echo -e "$Y sum: $a $N"  
 
-functions $3 $4 // Function Call
+functions2 $3 $4 // Function Call
  echo -e "$R sum: $a $N"
- functions 7 3 // Function Call
+ functions2 7 3 // Function Call
  echo -e "$R$BY sum of given numbers: $a $N"
 
  echo -e "$cyan*************$G PreviousStatus $cyan********************$N"
