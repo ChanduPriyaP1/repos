@@ -86,7 +86,7 @@ VALIDATE $? "Enabling Backend Application....."
 dnf install mysql -y &>>LOGFILE
 VALIDATE $? "installing Mysql....."
 
-mysql -h 172.31.42.54 -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>LOGFILE
+mysql -h 172.31.43.117 -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>LOGFILE
 VALIDATE $? "Schema loading"
 
 systemctl restart backend &>>LOGFILE
