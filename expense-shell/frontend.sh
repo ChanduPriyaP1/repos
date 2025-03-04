@@ -56,7 +56,7 @@ echo -e "$cyan*************$R SuperUser(OR)not $cyan********************$N"
   unzip /tmp/frontend.zip &>>LOGFILE
   VALIDATE $? "Unzip frontend Application"
 
-  cp      /etc/nginx/default.d/expense.conf &>>LOGFILE
+  cp /home/ec2-user/repos/expense-shell/expense.conf /etc/nginx/default.d/expense.conf &>>LOGFILE
 
   systemctl restart nginx &>>LOGFILE
   VALIDATE $? "frontend Application Restart"
