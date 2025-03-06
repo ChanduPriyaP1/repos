@@ -38,10 +38,13 @@ echo -e "$cyan*************$R SuperUser(OR)not $cyan********************$N"
 
   dnf install mysql-server -y &>>LOGFILE
   VALIDATE $? "Installing mysql"
+
   systemctl enable mysqld  &>>LOGFILE
   VALIDATE $? "enabling mysql"
+
   systemctl start mysqld  &>>LOGFILE
   VALIDATE $? "starting mysql"
+  
   # mysql_secure_installation --set-root-pass ExpenseApp@1  &>>LOGFILE
   # VALIDATE $? "setting up mysql root Passward"
 
